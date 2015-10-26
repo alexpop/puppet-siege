@@ -1,0 +1,42 @@
+---
+driver:
+  name: vagrant
+  customize:
+    cpus: 1
+    memory: 1024
+
+#driver_config:
+  # I don't login often, but when I do, I do it as root
+#  username: root
+#  password: vagrant
+
+provisioner:
+  name: puppet_apply
+  #puppet_version: puppet-3.8.3-1
+  manifests_path: manifests
+  modules_path: modules
+  hiera_data_path: hieradata
+  #puppet_verbose: true
+  #puppet_debug: true
+
+platforms:
+  - name: centos-6.6
+    driver:
+      box: 'chef/centos-6.6'
+      network:
+      - ['private_network', {ip: '192.168.56.10'}]
+  - name: centos-7.1
+    driver:
+      box: 'chef/centos-7.1'
+      network:
+      - ['private_network', {ip: '192.168.56.11'}]
+  - name: ubuntu-14.04
+    driver:
+      box: 'opscode-ubuntu-14.04'
+      network:
+      - ['private_network', {ip: '192.168.56.12'}]
+
+suites:
+  - name: default
+    provisioner:
+      manifest: site.pp
