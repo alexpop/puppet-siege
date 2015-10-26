@@ -16,9 +16,14 @@ class siege::install::package (
     ensure => $ensure
   }
 
-  # TO-DO: erb parameters from param config hash
+  # TO-DO: erb parameters from param hash
   file { '/etc/siege/siegerc2':
     ensure  => file,
     content => template('siege/siegerc.erb'),
   }
+
+  # hiera testing
+  $test = hiera('test')
+  $value = $test['key1']
+  warning("***HIERA $value")
 }
