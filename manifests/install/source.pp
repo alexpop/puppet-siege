@@ -31,6 +31,8 @@ class siege::install::source (
     command     => 'mkdir -p /usr/local/src/siege;\
       tar -xzf siege.tar.gz -C /usr/local/src/siege --strip-components=1;\
       cd /usr/local/src/siege;\
-      ./configure --with-ssl=/usr/bin/openssl'
+      ./configure --with-ssl=/usr/bin/openssl;\
+      make;\
+      make install'
   }
 }
