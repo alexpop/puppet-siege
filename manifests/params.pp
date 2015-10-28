@@ -14,23 +14,23 @@ class siege::params {
   $ensure = 'latest'
 
   case $osfamily {
-		'RedHat': {
-			$packages = [
-				'make',
-				'gcc',
-				'openssl',
-				'openssl-devel'
-			]
-		}
-		'Debian': {
-			$packages = [
-				'make',
-				'gcc',
-				'libssl-dev'
-			]
-		}
-		default: {
-			fail("Unsupported platform: ${osfamily}/${operatingsystem}")
-		}
-	}
+    'RedHat': {
+      $packages = [
+        'make',
+        'gcc',
+        'openssl',
+        'openssl-devel'
+      ]
+    }
+    'Debian': {
+      $packages = [
+        'make',
+        'gcc',
+        'libssl-dev'
+      ]
+    }
+    default: {
+      fail("Unsupported platform: ${osfamily}/${operatingsystem}")
+    }
+  }
 }
