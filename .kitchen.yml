@@ -8,6 +8,8 @@ driver:
 provisioner:
   name: puppet_apply
   #puppet_version: puppet-3.8.3-1
+  # Not installing chef since inspec is used for testing
+  require_chef_for_busser: false
   manifests_path: manifests
   modules_path: modules
   hiera_data_path: hieradata
@@ -16,7 +18,6 @@ provisioner:
 
 verifier:
   name: inspec
-  sudo: true
 
 platforms:
   - name: centos-6.6
