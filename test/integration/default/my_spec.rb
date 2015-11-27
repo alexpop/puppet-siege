@@ -1,6 +1,4 @@
-require 'serverspec'
-set :backend, :exec
-
+# use basic tests
 describe package('siege') do
   it { should be_installed }
 end
@@ -10,3 +8,4 @@ describe command('siege -V') do
     expect(subject.exit_status).to eq 0
   end
 end
+

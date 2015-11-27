@@ -14,10 +14,14 @@ provisioner:
   #puppet_verbose: true
   #puppet_debug: true
 
+verifier:
+  name: inspec
+  sudo: true
+
 platforms:
   - name: centos-6.6
     driver:
-      box: 'chef/centos-6.6'
+      box: 'centos-6.6'
       network:
       - ['private_network', {ip: '192.168.56.10'}]
   - name: centos-7.1
